@@ -1,0 +1,22 @@
+.rem{
+    text-decoration: none;
+    color: azure;
+    text-align: left;
+    padding: 2px;
+    width: 100%;
+    
+}
+.mr{
+    text-decoration: none;
+    color: azure;
+}
+.rem:hover{
+    color:blue;
+}
+.co{
+    /* background-color: aqua; */
+    margin-left: 30%;
+}
+.ml{
+    margin-left: 25%; 
+}
