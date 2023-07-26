@@ -1,60 +1,51 @@
 import React,{useState} from 'react'
-
+import axios from 'axios'
+import {useNavigate,Link} from 'react-router-dom'
 const SignUp = () => {
+// 
 
-  const [user, setUser] = useState();
-  const [pass, setPass] = useState();
-  const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
-  const [msg, setMsg] = useState();
-  var notifi = "";
+const [values, setvalues] = useState({
+  username: '',
+  email: '',
+  password: '',
+  phone: ''
 
-  const getvalue = (e) => {
-    var usr = document.getElementById("user").value;
-    var pas = document.getElementById("pass").value;
-    var ema = document.getElementById("email").value;
-    var phon = document.getElementById("phone").value;
-    e.preventDefault();
+});
 
-    alert("UserName: "+user+" Password: "+pass+" Email: "+email+" Phone: "+phone);
-    if (usr == "" || pas == "" || ema == "" || phon == "") {
-      //  alert("fill all Feild....");
-      // setMsg("Fill All Feild...")
-      document.getElementById("msg").innerHTML = "Fill All Feild...";
+const navigate=useNavigate();
 
-      setTimeout(() => {
-        setMsg("");
-       
-      }, 1500);
-    } 
-    setTimeout(() => {
+const handlerSubmit = (event) => {
+  event.preventDefault();
+  axios.post('http://localhost:8001/signup', values)
+  .then(res =>//navigate("/home"))//console.log(res))
+   {
+    if(res.data.Status === "Success"){
+      navigate("/")
 
-      document.getElementById("user").value = "";
-      document.getElementById("pass").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("phone").value = "";
-
-      document.getElementById('notifi').innerHTML = "";
-
-
-
-    }, 2000);
-
-
-  }
+    }else{
+      alert("No Record found....")
+    }
+  })
+   
+  .catch(err => console.log(err));
+  // fetch('http://localhost:8001/login').then(res => console.log(res)).then(err => console.log(err));
+}
+// 
 
   return (
     <div>
+      <form onSubmit={handlerSubmit}>
       <br></br>
-      <div style={{ height: '100px', width: '100px', marginLeft: 'auto', marginRight: 'auto' }} id='notifi'>{notifi}</div>
+      <div style={{ height: '100px', width: '100px', marginLeft: 'auto', marginRight: 'auto' }} id='notifi'></div>
       <h5>SignUp Page</h5><br></br>
-      <input type='text' id='user' onChange={(e) => { setUser(e.target.value) }} placeholder='Enter UserName' required /><br></br><br></br>
-      <input type='email' id='email' onChange={(e) => { setEmail(e.target.value) }} placeholder='Enter Email' required /><br></br><br></br>
-      <input type='password' id='pass' onChange={(e) => { setPass(e.target.value) }} placeholder='Enter Password' required /><br></br><br></br>
-      <input type='number' id='phone' onChange={(e) => { setPhone(e.target.value) }} placeholder='Enter Phone' required /><br></br><br></br>
-      <h5 id='msg'>{msg}</h5>
-      <button onClick={getvalue}>SignUp</button>
+      <input type='text' id='user' onChange={e => setvalues({ ...values, username: e.target.value })} placeholder='Enter UserName' required /><br></br><br></br>
+      <input type='email' id='email' onChange={e => setvalues({ ...values, email: e.target.value })} placeholder='Enter Email' required /><br></br><br></br>
+      <input type='password' id='pass' onChange={e => setvalues({ ...values, password: e.target.value })} placeholder='Enter Password' required /><br></br><br></br>
+      <input type='number' id='phone' onChange={e => setvalues({ ...values, phone: e.target.value })} placeholder='Enter Phone' required /><br></br><br></br>
+      <button>SignUp</button>
+      <Link to='/' className='rem' style={{color:'black'}}>Login</Link>
       <br></br><br></br>
+      </form>
     </div>
   )
 }

@@ -10,16 +10,20 @@ import SignUp from './Components/SignUp';
 import Calculator from './Components/Calculator';
 import MeterToCentimeter from './Components/MeterToCentimeter';
 import FeetToInches from './Components/FeetToInches';
+import Hamza from './Components/Hamza';
 import {Route,Routes} from 'react-router-dom'
 import 'tachyons'
 
 function App() {
+  const name="shahzad khan"
   return (
     <div className="App">
-    <Navbar/>
+      {/* <Hamza/> */}
+
+      <Navbar/>
 
     <Routes>
-      <Route path='/' element={<Home/>}></Route>
+      <Route path='/home' element={<Home nam={name}/>}></Route>
       <Route path='/about' element={<About/>}></Route>
       <Route path='/contect' element={<Contect/>}></Route>
       <Route path='/calculator' element={<Calculator/>}></Route>
@@ -27,12 +31,12 @@ function App() {
       <Route path='/feettoinches' element={<FeetToInches/>}></Route>
 
 
-      <Route path='/login' element={<Login/>}></Route>
+      <Route path='/' element={<Login/>}></Route>
       <Route path='/signup' element={<SignUp/>}></Route>
 
     </Routes>
-    
 <Footer/>
+    
     </div>
   );
 }

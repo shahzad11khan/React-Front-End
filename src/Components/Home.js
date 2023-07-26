@@ -1,6 +1,8 @@
 import React from 'react'
 import Desert from './DesertsList'
 import UseReg from './UseReg'
+import Navbar from './Navbar'
+import Footer from './Footer';
 
 const Home = () => {
   const data=[
@@ -33,10 +35,14 @@ const Home = () => {
   return (
     <>
      {/* this is home page */}
+    {/* <Navbar/> */}
+
      <h5 style={{marginTop:'10px'}}>Passing Data From One Component To Another Component</h5>
      <br></br>
      <Desert desert={data}/>
      <UseReg/>
+{/* <Footer/> */}
+
     </>
   )
 }

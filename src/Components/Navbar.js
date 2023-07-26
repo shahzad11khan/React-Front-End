@@ -29,15 +29,15 @@ const Navbar = () => {
   return (
     <div className='bg-gray rem'>
       <Link to='#' className='mr'>Starting Project</Link>
-      <Link to='/' className='rem co pd1'>Home</Link>
+      <Link to='/home' className='rem co pd1'>Home</Link>
       <Link to='/contect' className='rem pd1'>Contact</Link>
       <Link to='/about' className='rem'>AboutMe</Link>
       <Link to='/calculator' className='rem'>Calculator</Link>
       <Link to='/converter' className='rem'>MeterToCentimeter</Link>
       <Link to='/feettoinches' className='rem'>FeetToInches</Link>
-
-      <Link to='/login' className='rem'>Login</Link>
-      <Link to='/signup' className='rem'>SignUp</Link>
+{/* 
+      */}
+      
 
       <Link to='#' className='ml' id='btn' style={{textDecoration:'none',color:'wheat'}} onClick={Change}>Dark</Link>
 

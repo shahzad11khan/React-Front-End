@@ -6,6 +6,9 @@
     width: 100%;
     
 }
+.rem a{
+    padding: 10px;
+}
 .mr{
     text-decoration: none;
     color: azure;
